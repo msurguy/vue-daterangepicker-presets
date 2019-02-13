@@ -3,13 +3,13 @@
 With NPM:
 
 ```
-npm install vue-airbnb-style-datepicker --save
+npm install vue-vue-daterangepicker-presets --save
 ```
 
 With Yarn:
 
 ```
-yarn add vue-airbnb-style-datepicker
+yarn add vue-vue-daterangepicker-presets
 ```
 
 NB: This plugin is dependant on VueJS 2.x and [date-fns](https://date-fns.org/) (for date manipulation). Make sure you have these dependencies installed.
@@ -23,14 +23,14 @@ import Vue from 'vue'
 import App from './App.vue'
 
 // import component and stylesheet
-import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker'
-import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
+import VueDaterangepickerPresets from 'vue-vue-daterangepicker-presets'
+import 'vue-vue-daterangepicker-presets/dist/vue-vue-daterangepicker-presets.min.css'
 
 // see docs for available options
 const datepickerOptions = {}
 
 // make sure we can use it in our components
-Vue.use(AirbnbStyleDatepicker, datepickerOptions)
+Vue.use(VueDaterangepickerPresets, datepickerOptions)
 
 new Vue({
   el: '#app',
@@ -55,7 +55,7 @@ Add datepicker in your component like this:
         :value="formatDates(dateOne, dateTwo)"
       >
 
-      <AirbnbStyleDatepicker
+      <VueDaterangepickerPresets
         :trigger-element-id="'datepicker-trigger'"
         :mode="'range'"
         :fullscreen-mobile="true"
@@ -97,7 +97,7 @@ export default {
 
 NB: Note that you need to wrap the datepicker in a `<div class="datepicker-trigger">`. This is used as the base for the positioning of the datepicker. Also note that the id of element that triggers the datepicker needs to be the same as prop `:trigger-element`. <br><br> This plugin does not dictate how you show the dates. This allows for more flexibility since you can use whatever trigger element you want. The value is being emitted from the component when a date is selected, and handled in the `@date-one-selected` and `@date-two-selected` methods. Then you just assign the value to your data properties. And it is up to you to decide how you want to display the dates.<br> The `formatDates()` methods is just an example of how it can be solved.
 
-## [Options for `Vue.use(AirbnbStyleDatepicker, datepickerOptions)`](#plugin-options)
+## [Options for `Vue.use(VueDaterangepickerPresets, datepickerOptions)`](#plugin-options)
 
 | Prop name         | Value                                                                                                                                                                                                                                                                                                                                                                                          |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -114,7 +114,7 @@ NB: Note that you need to wrap the datepicker in a `<div class="datepicker-trigg
 _Example with all available options_:
 
 ```javascript
-Vue.use(AirBnbStyleDatepicker, {
+Vue.use(VueDaterangepickerPresets, {
   sundayFirst: false,
   dateLabelFormat: 'dddd, MMMM D, YYYY',
   days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
@@ -170,7 +170,7 @@ Vue.use(AirBnbStyleDatepicker, {
 })
 ```
 
-## [Properties, events & slots for `<AirbnbStyleDatepicker />`](#props-and-events)
+## [Properties, events & slots for `<VueDaterangepickerPresets />`](#props-and-events)
 
 | Prop name                | Value                                                                                                                                                                                                                            |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -211,7 +211,7 @@ Vue.use(AirBnbStyleDatepicker, {
 <br><br> _Example with all properties (not recommended, only to show values)_:
 
 ```html
-<AirbnbStyleDatepicker
+<VueDaterangepickerPresets
   :trigger-element-id="'datepicker-trigger'"
   :mode="'range'"
   :date-one="dateOne"

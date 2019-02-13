@@ -1,5 +1,5 @@
 import { shallow, createLocalVue } from '@vue/test-utils'
-import AirbnbStyleDatepicker from '@/components/AirbnbStyleDatepicker'
+import VueDaterangepickerPresets from '@/components/VueDaterangepickerPresets'
 import ClickOutside from '@/directives/ClickOutside'
 import ResizeSelect from '@/directives/ResizeSelect'
 import TestHelpers from 'test/test-helpers'
@@ -23,7 +23,7 @@ const createDatePickerInstance = (propsData, options, slots) => {
     options = {}
   }
   const component = {
-    ...AirbnbStyleDatepicker,
+    ...VueDaterangepickerPresets,
     ...options,
   }
   const wrapper = shallow(component, {
@@ -37,7 +37,7 @@ const createDatePickerInstance = (propsData, options, slots) => {
 const datepickerWrapper = '.asd__wrapper'
 let wrapper
 
-describe('AirbnbStyleDatepicker', () => {
+describe('VueDaterangepickerPresets', () => {
   beforeEach(() => {
     jest.useFakeTimers()
     jest.resetModules()

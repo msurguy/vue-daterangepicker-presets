@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import AirBnbStyleDatepicker from './../src/index'
+import VueDaterangepickerPresets from './../src/index'
 
-Vue.use(AirBnbStyleDatepicker, {
+Vue.use(VueDaterangepickerPresets, {
   sundayFirst: false,
   days: ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag'],
   daysShort: ['Mån', 'Tis', 'Ons', 'Tors', 'Fre', 'Lör', 'Sön'],

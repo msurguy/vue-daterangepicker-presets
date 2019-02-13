@@ -18,7 +18,7 @@
             placeholder="Select dates"
           >
 
-          <airbnb-style-datepicker
+          <vue-daterangepicker-presets
             :trigger-element-id="'datepicker-input-trigger'"
             :mode="'range'"
             :date-one="inputDateOne"
@@ -43,7 +43,7 @@
             placeholder="Select dates"
           >
 
-          <airbnb-style-datepicker
+          <vue-daterangepicker-presets
             :trigger-element-id="'datepicker-input-single-trigger'"
             :mode="'single'"
             :date-one="inputSingleDateOne"
@@ -58,7 +58,7 @@
         <div class="datepicker-trigger">
           <button id="datepicker-button-trigger">{{ formatDates(buttonDateOne, buttonDateTwo) || 'Select dates' }}</button>
 
-          <airbnb-style-datepicker
+          <vue-daterangepicker-presets
             :trigger-element-id="'datepicker-button-trigger'"
             :mode="'range'"
             :date-one="buttonDateOne"
@@ -83,7 +83,7 @@
           type="text"
           placeholder="Select date"
         >
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-inline-trigger'"
           :mode="'single'"
           :inline="true"
@@ -103,7 +103,7 @@
           type="text"
           placeholder="Select date"
         >
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-disabled-dates-trigger'"
           :mode="'single'"
           :inline="true"
@@ -119,7 +119,7 @@
         <div class="datepicker-trigger">
           <button id="datepicker-callback-trigger">{{ formatDates(callbackDateOne, callbackDateTwo) || 'Select dates' }}</button>
 
-          <airbnb-style-datepicker
+          <vue-daterangepicker-presets
             :trigger-element-id="'datepicker-callback-trigger'"
             :mode="'range'"
             :date-one="callbackDateOne"
@@ -263,22 +263,7 @@ input {
   padding: 6px 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
-.with-input {
-  .datepicker-trigger {
-    //padding-right: 40px;
-  }
-}
-.with-button {
-  .datepicker-trigger {
-    //padding-left: 10px;
-  }
-}
-// .inline-with-input {
-//   width: 600px;
-//   input {
-//     width: 100%;
-//   }
-// }
+
 .buttons {
   max-width: 500px;
   margin: 0 auto 30px;

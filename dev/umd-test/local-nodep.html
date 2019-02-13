@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Examples</title>
-  <link rel="stylesheet" type="text/css" href="../../dist/vue-airbnb-style-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/vue-vue-daterangepicker-presets.min.css">
   <style>
     html,
     body {
@@ -66,7 +66,7 @@
           readonly
         >
 
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-input-trigger'"
           :mode="'range'"
           :date-one="inputDateOne"
@@ -74,7 +74,7 @@
           v-on:date-one-selected="function(val) { inputDateOne = val }"
           v-on:date-two-selected="function(val) { inputDateTwo = val }"
           v-on:closed="onClosed"
-        ></airbnb-style-datepicker>
+        ></vue-daterangepicker-presets>
       </div>
     </div>
 
@@ -83,7 +83,7 @@
       <div class="datepicker-trigger">
         <button id="datepicker-button-trigger">{{ formatDates(buttonDateOne, buttonDateTwo) || 'Select dates' }}</button>
 
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-button-trigger'"
           :mode="'range'"
           :date-one="buttonDateOne"
@@ -94,7 +94,7 @@
           :offset-y="10"
           v-on:date-one-selected="function(val) { buttonDateOne = val }"
           v-on:date-two-selected="function(val) { buttonDateTwo = val }"
-        ></airbnb-style-datepicker>
+        ></vue-daterangepicker-presets>
       </div>
     </div>
 
@@ -106,7 +106,7 @@
         type="text"
         placeholder="Select date"
       >
-      <airbnb-style-datepicker
+      <vue-daterangepicker-presets
         :trigger-element-id="'datepicker-inline-trigger'"
         :mode="'single'"
         :inline="true"
@@ -115,7 +115,7 @@
         :months-to-show="1"
         :disabled-dates="['2018-03-30', '2018-04-10']"
         v-on:date-one-selected="function(val) { inlineDateOne = val }"
-      ></airbnb-style-datepicker>
+      ></vue-daterangepicker-presets>
     </div>
 
     <button v-on:click="toggleAlign">Toggle alignment</button>
@@ -123,10 +123,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.29.0/date_fns.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="../../dist/vue-airbnb-style-datepicker.min.js"></script>
+  <script src="../../dist/vue-vue-daterangepicker-presets.min.js"></script>
   <script>
     var datepickerOptions = {}
-    Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
+    Vue.use(window.VueDaterangepickerPresets, datepickerOptions)
 
     var app = new Vue({
       el: '#app',

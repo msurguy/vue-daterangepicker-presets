@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Examples</title>
-  <link rel="stylesheet" type="text/css" href="../../dist/vue-airbnb-style-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/vue-vue-daterangepicker-presets.min.css">
   <style>
     html,
     body {
@@ -66,7 +66,7 @@
           readonly
         >
 
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-input-trigger'"
           :mode="'range'"
           :date-one="inputDateOne"
@@ -77,7 +77,7 @@
           v-on:date-two-selected="function(val) { inputDateTwo = val }"
           v-on:previous-month="onMonthChange"
           v-on:next-month="onMonthChange"
-        ></airbnb-style-datepicker>
+        ></vue-daterangepicker-presets>
       </div>
     </div>
 
@@ -86,7 +86,7 @@
       <div class="datepicker-trigger">
         <button id="datepicker-button-trigger">{{ buttonDateOne + ' - ' + buttonDateTwo }}</button>
 
-        <airbnb-style-datepicker
+        <vue-daterangepicker-presets
           :trigger-element-id="'datepicker-button-trigger'"
           :mode="'range'"
           :date-one="buttonDateOne"
@@ -99,7 +99,7 @@
           v-on:date-two-selected="function(val) { buttonDateTwo = val }"
           v-on:previous-month="onMonthChange"
           v-on:next-month="onMonthChange"
-        ></airbnb-style-datepicker>
+        ></vue-daterangepicker-presets>
       </div>
     </div>
 
@@ -111,7 +111,7 @@
         type="text"
         placeholder="Select date"
       >
-      <airbnb-style-datepicker
+      <vue-daterangepicker-presets
         :trigger-element-id="'datepicker-inline-trigger'"
         :mode="'single'"
         :inline="true"
@@ -122,17 +122,17 @@
         v-on:date-one-selected="function(val) { inlineDateOne = val }"
         v-on:previous-month="onMonthChange"
         v-on:next-month="onMonthChange"
-      ></airbnb-style-datepicker>
+      ></vue-daterangepicker-presets>
     </div>
 
     <button v-on:click="toggleAlign">Toggle alignment</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="../../dist/vue-airbnb-style-datepicker.min.js"></script>
+  <script src="../../dist/vue-vue-daterangepicker-presets.min.js"></script>
   <script>
     var datepickerOptions = {}
-    Vue.use(window.AirbnbStyleDatepicker, datepickerOptions)
+    Vue.use(window.VueDaterangepickerPresets, datepickerOptions)
 
     var app = new Vue({
       el: '#app',

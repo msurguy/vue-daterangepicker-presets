@@ -1,17 +1,17 @@
 import './polyfills'
-import AirbnbStyleDatepicker from './components/AirbnbStyleDatepicker.vue'
+import VueDaterangepickerPresets from './components/VueDaterangepickerPresets.vue'
 
-const AirbnbStyleDatepickerPlugin = {
+const VueDaterangepickerPresetsPlugin = {
   install(Vue, options) {
-    Vue.component(AirbnbStyleDatepicker.name, {
+    Vue.component(VueDaterangepickerPresets.name, {
       ...options,
-      ...AirbnbStyleDatepicker,
+      ...VueDaterangepickerPresets,
     })
   },
 }
 
 // User has to install the component by themselves, to allow to pass options
 if (typeof window !== 'undefined' && window.Vue) {
-  window.AirbnbStyleDatepicker = AirbnbStyleDatepickerPlugin
+  window.VueDaterangepickerPresets = VueDaterangepickerPresetsPlugin
 }
-export default AirbnbStyleDatepickerPlugin
+export default VueDaterangepickerPresetsPlugin

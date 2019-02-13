@@ -169,6 +169,21 @@
           </ul>
         </div>
       </div>
+      <div class="asd__presets" v-if="mode !== 'single'">
+        <span>Presets: </span>
+        <a @click="presetOneWeek" :style="{color: colors.selected}">
+          Last Week
+        </a>
+        <a @click="presetOneMonth" :style="{color: colors.selected}">
+          Last Month
+        </a>
+        <a @click="presetTwoMonths" :style="{color: colors.selected}">
+          Last 2 months
+        </a>
+        <a @click="presetThreeMonths" :style="{color: colors.selected}">
+          Last 3 months
+        </a>
+      </div>
       <div class="asd__action-buttons" v-if="mode !== 'single' && showActionButtons">
         <button
           @click="closeDatepickerCancel"
@@ -176,10 +191,11 @@
         >
           {{ texts.cancel }}
         </button>
+
         <button
           ref="apply-button"
           @click="apply"
-          :style="{color: colors.selected}"
+          :style="{color: colors.selected, border: colors.selectedBorder}"
           type="button"
         >
           {{ texts.apply }}
@@ -229,7 +245,7 @@ import vClickOutside from 'v-click-outside'
 import ResizeSelect from '../directives/ResizeSelect'
 
 export default {
-  name: 'AirbnbStyleDatepicker',
+  name: 'VueDaterangepickerPresets',
   directives: {
     clickOutside: vClickOutside.directive,
     resizeSelect: ResizeSelect,
@@ -251,6 +267,7 @@ export default {
     disabledDates: { type: Array, default: () => [] },
     enabledDates: { type: Array, default: () => [] },
     showActionButtons: { type: Boolean, default: true },
+    showPresets: { type: Boolean, default: true },
     showShortcutsMenuTrigger: { type: Boolean, default: true },
     showMonthYearSelect: { type: Boolean, default: false },
     yearsForSelect: { type: Number, default: 10 },
@@ -263,7 +280,7 @@ export default {
   },
   data() {
     return {
-      wrapperId: 'airbnb-style-datepicker-wrapper-' + randomString(5),
+      wrapperId: 'vue-daterangepicker-presets-wrapper-' + randomString(5),
       dateFormat: 'YYYY-MM-DD',
       dateLabelFormat: 'dddd, MMMM D, YYYY',
       showDatepicker: false,
@@ -276,6 +293,7 @@ export default {
         text: '#565a5c',
         inRangeBorder: '#33dacd',
         disabled: '#fff',
+        selectedBorder: '1px solid #CCC'
       },
       sundayFirst: false,
       ariaLabels: {
@@ -454,6 +472,9 @@ export default {
       }
       return numberOfMonthsArray.map((_, index) => firstMonthArray[index].firstDateOfMonth)
     },
+    today() {
+      return format(new Date(), this.dateFormat)
+    }
   },
   watch: {
     selectedDate1(newValue, oldValue) {
@@ -544,10 +565,36 @@ export default {
     this.triggerElement.removeEventListener('click', this._handleWindowClickEvent)
   },
   methods: {
+    resetDateSelection(){
+      this.selectedDate1 = '';
+      this.selectedDate2 = '';
+      this.isSelectingDate1 = true;
+    },
+    presetOneWeek(){
+      this.resetDateSelection()
+      this.selectDate(subWeeks(this.today, 1));
+      this.selectDate(this.today)
+    },
+    presetOneMonth(){
+      this.resetDateSelection()
+      this.selectDate(subMonths(this.today, 1));
+      this.selectDate(this.today)
+    },
+    presetTwoMonths(){
+      this.resetDateSelection()
+      this.selectDate(subMonths(this.today, 2));
+      this.selectDate(this.today)
+    },
+    presetThreeMonths(){
+      this.resetDateSelection()
+      this.selectDate(subMonths(this.today, 3));
+      this.selectDate(this.today)
+    },
     getDayStyles(date) {
       const isSelected = this.isSelected(date)
       const isInRange = this.isInRange(date)
       const isDisabled = this.isDisabled(date)
+      //console.log(isSelected);
 
       let styles = {
         width: (this.width - 30) / 7 + 'px',
@@ -1073,7 +1120,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './../styles/transitions';
 
 $tablet: 768px;
 $color-gray: rgba(0, 0, 0, 0.2);
@@ -1081,12 +1127,35 @@ $border-normal: 1px solid $color-gray;
 $border: 1px solid #e4e7e7;
 $transition-time: 0.3s;
 
+// fade in
+.asd__fade-enter-active,
+.asd__fade-leave-active {
+  transition: all 0.2s ease;
+}
+
+.asd__fade-enter,
+.asd__fade-leave-active {
+  opacity: 0;
+}
+
+// datepicker
+.asd__list-complete-enter,
+.asd__list-complete-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.asd__list-complete-leave-active {
+  position: absolute;
+  visibility: hidden;
+}
+
 .datepicker-trigger {
   position: relative;
   overflow: visible;
 }
 
 .asd {
+
   &__wrapper {
     border: $border-normal;
     white-space: nowrap;
@@ -1322,6 +1391,20 @@ $transition-time: 0.3s;
     font-size: 15px;
     font-weight: inherit;
     padding: 0;
+  }
+
+  &__presets {
+    padding: 0 15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+      padding: 3px 10px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
   &__action-buttons {
