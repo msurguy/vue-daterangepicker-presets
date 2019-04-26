@@ -1,6 +1,6 @@
 {
   "name": "vue-daterangepicker-presets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A VueJs version of the popular AirBnb datepicker",
   "main": "dist/vue-daterangepicker-presets.cjs.js",
   "module": "dist/vue-daterangepicker-presets.es.js",
